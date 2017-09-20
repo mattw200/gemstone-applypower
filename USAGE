@@ -1,0 +1,18 @@
+
+To do xu3 (from combined data) and then gem5 to same file:
+
+REMEMBER TO USE FORMULAE + CLUSTERS IN FUTURE
+python power-model.py -p models/date-18-A15-new-pmcs-with-subs-02.csv -m maps/xu3-combined-data-A15.map -i ../combined-xu3-gem5-results/bko-warmed/results.csv-applied_formulae.csv  -o result-sub-02.csv --prefix "xu3 power model "
+
+
+NOW:
+python power-model.py -p models/date-18-A15-new-pmcs-with-subs-02.csv -m maps/xu3-combined-data-A15.map -i sample-input-data/bko-warmed-results.csv-A15-with-formulae-and-clusters.csv  -o result-sub-02.csv --prefix "xu3 power model "
+
+Then:
+
+python power-model.py -p models/date-18-A15-new-pmcs-with-subs-02.csv -m maps/gem5-A15.map -i result-sub-02.csv  -o result-sub-02.csv --prefix "gem5 power model "
+
+
+Then:
+
+python create_plot_data_cluster_bars.py -i result-sub-02.csv
