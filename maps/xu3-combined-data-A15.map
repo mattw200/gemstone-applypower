@@ -13,5 +13,5 @@ EPH_0x14	df['xu3new a15 0x14 avg rate']/df['Frequency_A15']
 EPH_0x70	df['xu3new a15 0x70 avg rate']/df['Frequency_A15']
 EPH_0x43	df['xu3new a15 0x43 avg rate']/df['Frequency_A15']
 EPH_0x16	df['xu3new a15 0x16 avg rate']/df['Frequency_A15']
-Voltage_A15	0.954
-Voltage_A15_Squared	0.910116
+Voltage_A15	df['hack voltage A15']
+Voltage_A15_Squared	df['hack voltage A15']*df['hack voltage A15']

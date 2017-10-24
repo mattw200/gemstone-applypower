@@ -16,3 +16,22 @@ python power-model.py -p models/date-18-A15-new-pmcs-with-subs-02.csv -m maps/ge
 Then:
 
 python create_plot_data_cluster_bars.py -i result-sub-02.csv
+
+
+
+For A7:
+python power-model.py -p models/date-18-A7-pmcs-with-subs-02-4-only.csv -m maps/xu3-combined-data-A7.map -i sample-input-data/bko-warmed-results.csv-A7-with-formulae-and-clusters.csv  -o result-sub-02-A7.csv --prefix "xu3 power model "
+
+python power-model.py -p  models/date-18-A7-pmcs-with-subs-02-4-only.csv -m maps/gem5-A7.map -i result-sub-02-A7.csv  -o result-sub-02-A7.csv --prefix "gem5 power model "
+
+python create_plot_data_cluster_bars.py -i result-sub-02-A7.csv
+
+
+
+For bk2
+=======
+python power-model.py -p models/date-18-A15-new-pmcs-with-subs-02.csv -m maps/xu3-combined-data-A15.map -i sample-input-data/bk2-warmed-results.csv-A15-all-freq-with-workload-clusters.csv  -o result-sub-02-bk2.csv --prefix "xu3 power model "
+
+python power-model.py -p models/date-18-A15-new-pmcs-with-subs-02.csv -m maps/gem5-A15.map -i result-sub-02-bk2.csv  -o result-sub-02-bk2.csv --prefix "gem5 power model "
+
+python create_plot_data_cluster_bars.py -i result-sub-02-bk2.csv

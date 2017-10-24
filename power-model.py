@@ -3,16 +3,41 @@
 # Matthew J. Walker
 # Created: 19 August 2017
 
+def voltage_lookup_hack(cluster, freq_mhz):
+    lookup_a7 = {}
+    lookup_a15 = {
+        600 : 0.912,
+        1000 : 0.954,
+        1400 : 1.042,
+        1800 : 1.183
+    }
+    lookup_a7 = {
+        200 : 0.9195,
+        600 : 0.944,
+        1000 : 1.089,
+        1400 : 1.253
+    }
+    if cluster.find('a15') > -1 or cluster.find('A15') > -1:
+        return lookup_a15[int(freq_mhz)]
+    elif cluster.find('a7') > -1 or cluster.find('A7') > -1:
+        return lookup_a7[int(freq_mhz)]
+    raise ValueError("Couldn't find lookup voltage")
+
+# this function adds a voltage column to xu3 and gem5 data based on the frequency
+def hack_add_voltage_to_data_df(df):
+    df['hack voltage A7'] = df['xu3 stat Freq (MHz) C0'].apply(lambda x : voltage_lookup_hack('A7',x)) 
+    df['hack voltage A15'] = df['xu3 stat Freq (MHz) C4'].apply(lambda x : voltage_lookup_hack('A15',x)) 
 
 def run_model(data_df, params_df, map_dict, map_order, individual_components=True, compare_with=None, prefix='power model '):
     import math
     print(params_df['Name'])
     print(params_df['Value'])
     df = data_df
+    hack_add_voltage_to_data_df(df)
     # Pre-calculate values in map (not efficient, but allows re-use of results)
     for map_item in map_order:
         df[map_item] = pd.eval(map_dict[map_item],engine='python')
-    print df[['xu3 stat Freq (MHz) C0', 'xu3 stat Freq (MHz) C4', 'gem5 stat system.bigCluster.clk_domain.clock', 'gem5 stat system.littleCluster.clk_domain.clock', 'Frequency_A15']]
+    #print df[['xu3 stat Freq (MHz) C0', 'xu3 stat Freq (MHz) C4', 'gem5 stat system.bigCluster.clk_domain.clock', 'gem5 stat system.littleCluster.clk_domain.clock', 'Frequency_A15']]
     power = 0
     if individual_components:
         df[prefix+' non-dyn power'] = 0
