@@ -29,18 +29,18 @@ There are several different sample data inputs. Some are measured from
  different format and workloads were exeucted once. The gem5 data was 
  collected from gem5 experiments and converted using GemStone, see [4]. 
 
-Name				| paper	| from  | sample data description
+Name				| paper	| from  | data collected with
 --------------------------------------------------------------------------
-asrtpm-A15-powmon-data.csv	| [2]	| [1]	| used Powmon
-asrtpm-A7-powmon-data.csv	| [2]	| [1]	| used Powmon
-gs-profiler-A15-data.csv        | [4]   | 	| used GemStone-Profiler
-gs-profiler-A7-data.csv         | [4]   | 	| used GemStone-Profiler
-gem5-0-A15-data.csv		| [4]	|	| gem5 (0)*
-gem5-0-A7-data.csv		| [4]	|	| gem5 (0)*
-gem5-1-A15-data.csv		| [4]	|	| gem5 (1)*
-gem5-1-A7-data.csv		| [4]	|	| gem5 (1)*
+asrtpm-A15-powmon-data.csv	| [2]	| [1]	| Powmon
+asrtpm-A7-powmon-data.csv	| [2]	| [1]	| Powmon
+gs-profiler-gem5-0-A15-data.csv | [4]   | 	| GemStone-Profiler + gem5 (0)
+gs-profiler-gem5-0-A7-data.csv  | [4]   | 	| GemStone-Profiler + gem5 (0)
+gs-profiler-gem5-1-A15-data.csv | [4]   | 	| GemStone-Profiler + gem5 (1)
+gs-profiler-gem5-1-A7-data.csv  | [4]   | 	| GemStone-Profiler + gem5 (1)
 
 *gem5 model [(0):before,(1):after] branch predictor fix was made, see [4]
+
+The GemStone-Profiler and gem5 data are combined in the same file. 
 
 
 MAP FILES
