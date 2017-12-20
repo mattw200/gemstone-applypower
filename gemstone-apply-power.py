@@ -3,6 +3,9 @@
 # Matthew J. Walker
 # Created: 19 August 2017
 
+vf_lookup = None
+
+'''
 def voltage_lookup_hack(cluster, freq_mhz):
     lookup_a7 = {}
     lookup_a15 = {
@@ -27,13 +30,28 @@ def voltage_lookup_hack(cluster, freq_mhz):
 def hack_add_voltage_to_data_df(df):
     df['hack voltage A7'] = df['xu3 stat Freq (MHz) C0'].apply(lambda x : voltage_lookup_hack('A7',x)) 
     df['hack voltage A15'] = df['xu3 stat Freq (MHz) C4'].apply(lambda x : voltage_lookup_hack('A15',x)) 
+'''
+
+def vlookup(freq_mhz):
+    if vf_lookup_df is None:
+        raise ValueError("Using vlookup but not vf_looup file specified (-v)")
+    import numpy as np
+    # NOTE: rounds the frequencies to the nearest 10 (as it is sometimes out by > 0.5)
+    freq_mhz = freq_mhz.apply(lambda x : np.around(x,-1).astype(np.uint64))
+    print ('Frequencies in input data: '+str(freq_mhz.unique()))
+    for f in freq_mhz.unique(): # just checking - otherwise error message is not clear
+        if f not in vf_lookup_df['frequency (MHz)'].tolist():
+            raise ValueError('input data contains frequency: '+str(f)+ \
+                ' MHz which is not in the vf lookup')
+    return freq_mhz.apply(lambda x : vf_lookup_df[vf_lookup_df['frequency (MHz)'] == int(x)]['voltage (V)'].iloc[0])
+    
 
 def run_model(data_df, params_df, map_dict, map_order, individual_components=True, compare_with=None, prefix='power model '):
     import math
     print(params_df['Name'])
     print(params_df['Value'])
     df = data_df
-    hack_add_voltage_to_data_df(df)
+    #hack_add_voltage_to_data_df(df)
     # Pre-calculate values in map (not efficient, but allows re-use of results)
     for map_item in map_order:
         df[map_item] = pd.eval(map_dict[map_item],engine='python')
@@ -87,6 +105,8 @@ if __name__=='__main__':
                help="The data")
     parser.add_argument('-m', '--var-map',  dest='var_map', required=True, \
                help="Maps the names of the variables in the data to the model parameters")
+    parser.add_argument('-v', '--vf-lookup', dest='vf_lookup', required=False, \
+               help="Path to voltage-frequency lookup file")
     parser.add_argument('--compare-with',  dest='compare_with', required=False, \
                help="The name of a column to compare the final power with (optional)")
     parser.add_argument('--prefix', dest='prefix', required=False, \
@@ -99,6 +119,8 @@ if __name__=='__main__':
     map_dict, map_order = map_dict_from_file(args.var_map)  
     if args.prefix:
         prefix = args.prefix
+    if args.vf_lookup:
+        vf_lookup_df = pd.read_csv(args.vf_lookup,sep='\t')
     run_model(data_df, params_df, map_dict, map_order, compare_with=args.compare_with, prefix=prefix)
     if not args.output_file:
         args.output_file='model-result.csv'
