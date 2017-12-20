@@ -5,5 +5,5 @@ EPH_0x08	(((df['gem5 stat system.littleCluster.cpus0.committedInsts'] + df['gem5
 EPH_0x04	(((df['gem5 stat system.littleCluster.cpus0.dcache.overall_accesses::total'] + df['gem5 stat system.littleCluster.cpus1.dcache.overall_accesses::total'] + df['gem5 stat system.littleCluster.cpus2.dcache.overall_accesses::total'] + df['gem5 stat system.littleCluster.cpus3.dcache.overall_accesses::total'])/4)/df['gem5 stat sim_seconds'])/df['Frequency_A7']
 EPH_0x03	(((df['gem5 stat system.littleCluster.cpus0.dcache.overall_misses::total'] + df['gem5 stat system.littleCluster.cpus1.dcache.overall_misses::total'] + df['gem5 stat system.littleCluster.cpus2.dcache.overall_misses::total'] + df['gem5 stat system.littleCluster.cpus3.dcache.overall_misses::total'])/4)/df['gem5 stat sim_seconds'])/df['Frequency_A7']
 EPH_0x60	(((df['gem5 stat system.mem_ctrls.bytes_read::littleCluster.cpus0.data'] + df['gem5 stat system.mem_ctrls.bytes_read::littleCluster.cpus1.data'] + df['gem5 stat system.mem_ctrls.bytes_read::littleCluster.cpus2.data'] + df['gem5 stat system.mem_ctrls.bytes_read::littleCluster.cpus3.data'])/4)/df['gem5 stat sim_seconds'])/df['Frequency_A7']
-Voltage_A7	df['gem5 stat system.voltage_domain.voltage']
+Voltage_A7	vlookup(df['Frequency_A7'])
 Voltage_A7_Squared	df['Voltage_A7']*df['Voltage_A7']

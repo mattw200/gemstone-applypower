@@ -3,7 +3,7 @@
 # Matthew J. Walker
 # Created: 19 August 2017
 
-vf_lookup = None
+#vf_lookup = None
 
 '''
 def voltage_lookup_hack(cluster, freq_mhz):
@@ -97,6 +97,7 @@ if __name__=='__main__':
     import argparse
     import os
     import pandas as pd
+    used_vf = False
     prefix = 'power model '
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--params',  dest='model_params', required=True, \
@@ -125,7 +126,6 @@ if __name__=='__main__':
     if not args.output_file:
         args.output_file='model-result.csv'
     data_df.to_csv(args.output_file,sep='\t')
-
     # TODO: calculate diff from rates as well 
     # Add other PMCs
     # Find new PMC for A15
