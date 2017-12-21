@@ -22,11 +22,9 @@ def run_model(data_df, params_df, map_dict, map_order, individual_components=Tru
     print(params_df['Name'])
     print(params_df['Value'])
     df = data_df
-    #hack_add_voltage_to_data_df(df)
     # Pre-calculate values in map (not efficient, but allows re-use of results)
     for map_item in map_order:
         df[map_item] = pd.eval(map_dict[map_item],engine='python')
-    #print df[['xu3 stat Freq (MHz) C0', 'xu3 stat Freq (MHz) C4', 'gem5 stat system.bigCluster.clk_domain.clock', 'gem5 stat system.littleCluster.clk_domain.clock', 'Frequency_A15']]
     power = 0
     if individual_components:
         df[prefix+' non-dyn power'] = 0
