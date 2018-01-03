@@ -1,0 +1,12 @@
+Intercept	1
+Frequency_A15	freq_A15_MHz
+EPH_0x11	(pmc_rates_xu3[20]+pmc_rates_xu3[20+7]+pmc_rates_xu3[20+14]+pmc_rates_xu3[20+21])/freq_A15_MHz
+EPH_0x1b	(pmc_rates_xu3[21]+pmc_rates_xu3[21+7]+pmc_rates_xu3[21+14]+pmc_rates_xu3[21+21])/freq_A15_MHz
+EPH_0x50	(pmc_rates_xu3[22]+pmc_rates_xu3[22+7]+pmc_rates_xu3[22+14]+pmc_rates_xu3[22+21])/freq_A15_MHz
+EPH_0x6a	(pmc_rates_xu3[23]+pmc_rates_xu3[23+7]+pmc_rates_xu3[23+14]+pmc_rates_xu3[23+21])/freq_A15_MHz
+EPH_0x73	(pmc_rates_xu3[24]+pmc_rates_xu3[24+7]+pmc_rates_xu3[24+14]+pmc_rates_xu3[24+21])/freq_A15_MHz
+EPH_0x14	(pmc_rates_xu3[25]+pmc_rates_xu3[25+7]+pmc_rates_xu3[25+14]+pmc_rates_xu3[25+21])/freq_A15_MHz
+EPH_0x19	(pmc_rates_xu3[26]+pmc_rates_xu3[26+7]+pmc_rates_xu3[26+14]+pmc_rates_xu3[26+21])/freq_A15_MHz
+EPH_0x1b_minus_EPH_0x73	(df['EPH_0x1b']-df['EPH_0x73'])
+Voltage_A15	voltage_A15
+Voltage_A15_Squared	(voltage_A15*voltage_A15)
