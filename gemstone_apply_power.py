@@ -3,6 +3,8 @@
 # Matthew J. Walker
 # Created: 19 August 2017
 
+vf_lookup_df = None
+
 def vlookup(freq_mhz):
     if vf_lookup_df is None:
         raise ValueError("Using vlookup but not vf_looup file specified (-v)")
