@@ -67,9 +67,9 @@ if __name__=='__main__':
     a15_data_df = pd.read_csv(args.a15_in, sep='\t')
     a7_data_df = a7_data_df[a7_data_df['hw stat core mask'] == '0,1,2,3']
     a15_data_df = a15_data_df[a15_data_df['hw stat core mask'] == '4,5,6,7']
-    debug_cols = [x for x in a15_data_df if x.find('0x14') > -1 or x.find('0x73') > -1 or x.find('0x1b') > -1]
-    a7_data_df.to_csv('DEBUG-A7.csv',sep='\t')
-    a15_data_df[['hw stat workload name', 'hw stat core mask', 'hw stat duration (s)', 'hw stat Freq (MHz) C0', 'hw stat Freq (MHz) C4']+debug_cols].to_csv('DEBUG-A15.csv',sep='\t')
+    #debug_cols = [x for x in a15_data_df if x.find('0x14') > -1 or x.find('0x73') > -1 or x.find('0x1b') > -1]
+    #a7_data_df.to_csv('DEBUG-A7.csv',sep='\t')
+    #a15_data_df[['hw stat workload name', 'hw stat core mask', 'hw stat duration (s)', 'hw stat Freq (MHz) C0', 'hw stat Freq (MHz) C4']+debug_cols].to_csv('DEBUG-A15.csv',sep='\t')
 
     new_df = pd.DataFrame()
     if args.a7_freqs:
