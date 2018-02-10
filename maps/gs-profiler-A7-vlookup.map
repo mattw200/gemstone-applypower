@@ -5,5 +5,5 @@ EPH_0x08	df['hwnew a7 0x08 avg rate']/df['Frequency_A7']
 EPH_0x04	df['hwnew a7 0x04 avg rate']/df['Frequency_A7']
 EPH_0x03	df['hwnew a7 0x03 avg rate']/df['Frequency_A7']
 EPH_0x60	df['hwnew a7 0x60 avg rate']/df['Frequency_A7']
-Voltage_A7	df['hack voltage A7']
-Voltage_A7_Squared	df['hack voltage A7']*df['hack voltage A7']
+Voltage_A7	vlookup(df['Frequency_A7'])
+Voltage_A7_Squared	df['Voltage_A7']*df['Voltage_A7']
