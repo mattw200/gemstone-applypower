@@ -58,7 +58,11 @@ if __name__=='__main__':
                help="A15 v lookup")
     parser.add_argument('--a7-vf', dest='a7_vf', required=True, \
                help="A7 v lookup")
+    parser.add_argument('-w','--working-directory', dest='working_directory', required=False)
     args=parser.parse_args()
+
+    if args.working_directory:
+        working_dir = args.working_directory
     
     if not os.path.exists(working_dir):
         os.makedirs(working_dir)
@@ -70,7 +74,6 @@ if __name__=='__main__':
     #debug_cols = [x for x in a15_data_df if x.find('0x14') > -1 or x.find('0x73') > -1 or x.find('0x1b') > -1]
     #a7_data_df.to_csv('DEBUG-A7.csv',sep='\t')
     #a15_data_df[['hw stat workload name', 'hw stat core mask', 'hw stat duration (s)', 'hw stat Freq (MHz) C0', 'hw stat Freq (MHz) C4']+debug_cols].to_csv('DEBUG-A15.csv',sep='\t')
-
     new_df = pd.DataFrame()
     if args.a7_freqs:
         for a7_freq in [int(x.strip()) for x in args.a7_freqs.split(',')]:

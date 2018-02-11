@@ -35,3 +35,12 @@ python power-model.py -p models/date-18-A15-new-pmcs-with-subs-02.csv -m maps/xu
 python power-model.py -p models/date-18-A15-new-pmcs-with-subs-02.csv -m maps/gem5-A15.map -i result-sub-02-bk2.csv  -o result-sub-02-bk2.csv --prefix "gem5 power model "
 
 python create_plot_data_cluster_bars.py -i result-sub-02-bk2.csv
+
+
+==========================
+Cross freq used in re-runs:
+
+./cross_freq_plot_wrapper.py --a7-freqs '200,600,1000,1400' --a15-freqs '600,1000,1400,1800' --a7-in ../power-and-energy-analysis-A7-and-A15/hw-gem5-A7-and-A15-combined.csv-with-formulae-and-clusters.csv --a15-in ../power-and-energy-analysis-A7-and-A15/hw-gem5-A7-and-A15-combined.csv-with-formulae-and-clusters.csv --a15-vf vf-lookup/vf-A15.csv --a7-vf vf-lookup/vf-A7.csv 
+
+
+./cross_freq_plot_wrapper.py --a7-freqs '200,600,1000,1400' --a15-freqs '600,1000,1400,1800' --a7-in ../results-re-run-paper/power-energy-results/hw-gem5-A7-and-A15-combined.csv-with-formulae-and-clusters.csv  --a15-in ../results-re-run-paper/power-energy-results/hw-gem5-A7-and-A15-combined.csv-with-formulae-and-clusters.csv  --a15-vf vf-lookup/vf-A15.csv --a7-vf vf-lookup/vf-A7.csv -w ../results-re-run-paper/power-energy-results/
