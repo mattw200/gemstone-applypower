@@ -1,9 +1,8 @@
 # GemStone-ApplyPower
----------------------
 
 This project allows empirical power models (e.g. those build from [Powmon](http://powmon.ecs.soton.ac.uk)) 
 to be applied to either data collected from an Arm hardware platfrom 
-(e.g. using [GemStone-Profiler-Automate](http://gemstone.ecs.soton.ac.uk)) or 
+(e.g. using [GemStone-Profiler-Automate](https://github.com/mattw200/gemstone-profiler-automate)) or 
  [gem5](http://gem5.org) simulation. 
  
 It also outputs equations that can be inserted directly into [gem5](http://gem5.org) for "online"
@@ -13,11 +12,10 @@ Furthermore, it allows the performance, power and energy scaling to be evaluted 
 plotted with [GemStone](http://gemstone.ecs.soton.ac.uk). 
 
 ## Usage
---------
+
 Tutorials for using this project are available at [GemStone](http://gemstone.ecs.soton.ac.uk). 
 
 ## Provided models, sample data, etc.
--------------------------------------
 
 ### MODELS
 
@@ -79,7 +77,7 @@ The `GemStone-Profiler` and gem5 data are combined in the same file.
 4. M. J. Walker, S. Bischoff, S. Diestelhorst, G V. Merrett, and B M. Al-Hashimi, "Hardware-Validated CPU Performance and Energy Modelling", in IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS), Belfast, Northern Ireland, UK, April, 2018 [Accepted]
 
 ## Authors
-----------
+
 [Matthew J. Walker](mailto:mw9g09@ecs.soton.ac.uk) - [University of Southampton](https://www.southampton.ac.uk)
 
 This project supports the paper:
@@ -93,7 +91,7 @@ This work is supported by [Arm Research](https://developer.arm.com/research),
 
 
 ## License
-----------
+
 This project is licensed under the 3-clause BSD license. See LICENSE.md for details.
 
 

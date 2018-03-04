@@ -1,1 +1,0 @@
-python create_equation.py -p models/asrtpm-A15.params -m maps/ad-board-A15.map -s '          +          '
